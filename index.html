@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز صيانة الإبداع الذكية | خبراء صيانة وتوريد أجهزة الليزر</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0056b3; 
+            --secondary: #00a8cc; 
+            --dark: #1e272e;
+            --light: #f8fafc;
+            --accent: #e74c3c;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* الشريط العلوي */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* تنسيق الشعار والنصوص بجواره */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* المسافة بين الشعار والنص */
+        }
+
+        .logo-container img {
+            height: 105px; /* تم تكبير الشعار */
+            width: auto;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 13px;
+            color: #4a5568;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin: 0 15px;
+            font-weight: 700;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #0e3562, var(--secondary));
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
+        }
+
+        /* قسم الواجهة الرئيسي المدمج بالـ Slider التفاعلي */
+        .hero-slider-section {
+            background: linear-gradient(135deg, #f5f9fd 0%, #eef5fc 100%);
+            padding: 50px 20px 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* تنسيق اسم المركز الجديد */
+        .main-center-title {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-weight: 900;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* تنسيق العبارة التسويقية */
+        .marketing-headline {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 800;
+            margin-top: 0;
+        }
+
+        .marketing-headline span {
+            color: var(--accent);
+        }
+
+        .marketing-text {
+            font-size: 20px;
+            color: #4a5568;
+            max-width: 850px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+        }
+
+        /* إعدادات السلايدر في الأعلى لجذب الانتباه */
+        .swiper {
+            width: 100%;
+            max-width: 1100px;
+            padding-top: 10px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            width: 280px;
+            height: 360px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            box-sizing: border-box;
+            transition: 0.4s ease;
+            border: 1px solid rgba(0, 86, 179, 0.05);
+        }
+
+        /* تأثير إضاءة خفيفة (Glow) خلف السلايد النشط في المنتصف */
+        .swiper-slide-active {
+            box-shadow: 0 20px 40px rgba(0, 168, 204, 0.25);
+            border: 1px solid var(--secondary);
+        }
+
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.05));
+        }
+
+        /* شبكة المميزات بالأيقونات الكبيرة */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.12);
+            border-bottom-color: var(--secondary);
+        }
+
+        .feature-box i {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover i {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .feature-box h3 {
+            font-size: 17px;
+            margin: 10px 0 0 0;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        /* قسم الخدمات الشاملة والتوريد */
+        .services-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--light);
+            width: 30%;
+            min-width: 280px;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            background: linear-gradient(185deg, #ffffff, #eef5fc);
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon-wrap {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 168, 204, 0.1);
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .service-card .icon-wrap i {
+            font-size: 35px;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* قسم من نحن */
+        .about-us {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .about-us h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .about-us p {
+            font-size: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* قسم التواصل */
+        .contact-section {
+            padding: 70px 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .contact-card {
+            background: var(--light);
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--primary);
+        }
+
+        .contact-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .phone-number {
+            font-size: 34px;
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: 1px;
+            direction: ltr;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn i {
+            margin-left: 10px;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="image_d9f32c.png" alt="شعار الإبداع الذكية">
+            <div class="logo-text">
+                <div class="logo-title">مركز صيانة الإبداع الذكية</div>
+                <div class="logo-subtitle">حلول متقدمة لصيانة الليزر الطبي</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#services">خدماتنا</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact" class="contact-btn">طلب صيانة</a>
+        </nav>
+    </header>
+
+    <section class="hero-slider-section">
+        <h1 class="main-center-title">مركز صيانة الإبداع الذكية لصيانة أجهزة الليزر الطبية</h1>
+        
+        <h2 class="marketing-headline">لا تدع الأعطال توقف <span>عيادتك!</span></h2>
+        
+        <p class="marketing-text">
+            نحن ندرك أن توقف جهاز الليزر يعني توقف العمل بالكامل. نضع بين يديك خبرتنا الطويلة في تشخيص وصيانة الأنظمة الطبية العالمية، لضمان استمرارية عيادتك بأقصى كفاءة وأعلى درجات الأمان.
+        </p>
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="image_d7b0f6.png" alt="صيانة أجهزة ليزر"></div>
+                <div class="swiper-slide"><img src="image_d7b12e.png" alt="صيانة أجهزة ليزر طاقة"></div>
+                <div class="swiper-slide"><img src="image_d7b14f.png" alt="إصلاح أجهزة الليزر الطبية"></div>
+                <div class="swiper-slide"><img src="image_d7b4b1.png" alt="قطع غيار ومعايرة ليزر"></div>
+                <div class="swiper-slide"><img src="image_d7b50f.png" alt="صيانة مركز الإبداع الذكية"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <i class="fa-solid fa-microscope"></i>
+                <h3>دقة في التشخيص المتقدم</h3>
+            </div>
+            <div class="feature-box">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <h3>سرعة استجابة للحالات الطارئة</h3>
+            </div>
+            <div class="feature-box">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>قطع غيار أصلية ومضمونة</h3>
+            </div>
+            <div class="feature-box">
+                <i class="fa-solid fa-sliders"></i>
+                <h3>معايرة دقيقة لنتائج علاجية آمنة</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2>منظومة خدماتنا المتكاملة</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="icon-wrap"><i class="fa-solid fa-box-open"></i></div>
+                <h3>توريد المستهلكات والإكسسوارات</h3>
+                <p>تأمين وتوريد كافة مستهلكات وإكسسوارات عمليات الليزر الطبية بجودة عالية توافق أرقى المعايير والمواصفات التشغيلية.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-wrap"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>تركيب قطع الغيار والضمان</h3>
+                <p>تركيب قطع الغيار الأصلية والعدسات بدقة متناهية، مع تقديم ضمانات حقيقية ومعتمدة على جميع عمليات الصيانة المنفذة.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
+                <h3>عقود الصيانة الدورية</h3>
+                <p>برامج صيانة وقائية مجدولة دورياً لتفادي الأعطال الفجائية، الحفاظ على استقرار الطاقة الصادرة، وإطالة العمر الافتراضي لمنظومة الليزر.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us" id="about">
+        <h2>من نحن؟</h2>
+        <p>
+            نحن مجموعة من المتخصصين والمهندسين الخبراء في علوم الليزر والهندسة الطبية، نجمع بين الشغف التقني والخبرة الميدانية لتقديم خدمات صيانة ترتقي لمعايير الجودة العالمية وتلبي تطلعات القطاع الصحي.
+        </p>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-card">
+            <h3>للتواصل المباشر وطلب الصيانة</h3>
+            <p>فريقنا الهندسي مستعد لتلقي بلاغات الأعطال وتلبية طلباتكم فوراً.</p>
+            
+            <div class="phone-number">0541912940</div>
+            
+            <br>
+            <a href="https://wa.me/966541912940" class="whatsapp-btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب الآن
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 - مركز صيانة الإبداع الذكية لأجهزة الليزر الطبية.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            autoplay: {
+                delay: 2800,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 15,
+                stretch: 0,
+                depth: 120,
+                modifier: 1.5,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>
