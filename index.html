@@ -367,6 +367,55 @@
             padding: 25px 0;
             font-size: 15px;
         }
+
+        /* تحسينات العرض لشاشات الجوال والأجهزة اللوحية */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px; 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: center;
+            }
+
+            .logo-container {
+                flex-direction: column; 
+                gap: 10px;
+            }
+
+            .logo-container img {
+                height: 70px; 
+            }
+
+            .logo-text {
+                align-items: center;
+            }
+
+            .logo-title {
+                font-size: 18px; 
+            }
+
+            .logo-subtitle {
+                font-size: 12px; 
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 14px;
+            }
+
+            .contact-btn {
+                padding: 8px 20px;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+        }
     </style>
 </head>
 <body>
